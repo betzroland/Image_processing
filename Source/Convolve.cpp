@@ -49,6 +49,9 @@ void Convolve::blur(string& image_name, int& row, int& column, int& max_intensit
 
     cout << "Level of blurring? (1, 2, 3)" << endl;
     cin >> level;
+    if(level!=1 || level!=2 || level!=3){
+        throw std::domain_error("Wrong parameter!");
+    }
 
     //----------------------------------------------------------------------------
     //Applying the matrix on every pixel in the image, except a 2 pixel wide range
