@@ -224,4 +224,3 @@ void Convolve::sharpen(string& image_name, int& row, int& column, int& max_inten
     save(output, row, column, max_intensity, vect);
     cout << "The modified image has been saved with a name: "<< image_name << "_sharpened" << endl;
 }
-
