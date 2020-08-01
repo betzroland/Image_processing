@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stdexcept>
+#include <cstdio>
 #include "Read_in.h"
 #include "Lights.h"
 #include "Transform.h"
@@ -10,8 +12,8 @@ using namespace std;
 
 int main(){
 
-try{   
-    
+try{
+
 string next="y";
 
 while(next=="y"){
