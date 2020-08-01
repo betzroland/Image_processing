@@ -10,7 +10,7 @@ using namespace std;
 void Lights::darken(string& image_name, int& row, int& column, int& max_intensity, vector <vector<int> >& vect){
     cout << "With how many percent? (1-99)" << endl;
     cin >> percent;
-    if(typeid(percent).name()!=typeid(1).name || percent<1 || percent>99){
+    if(typeid(percent).name()!=typeid(1).name() || percent<1 || percent>99){
         throw std::domain_error("Wrong parameter!");
     }
     for(int i=0; i<row; i++){
@@ -26,7 +26,7 @@ void Lights::darken(string& image_name, int& row, int& column, int& max_intensit
 void Lights::brighten(string& image_name, int& row, int& column, int& max_intensity, vector <vector<int> >& vect){
     cout << "With how many percent? (1-99)" << endl;
     cin >> percent;
-    if(typeid(percent).name()!=typeid(1).name || percent<1 || percent>99){
+    if(typeid(percent).name()!=typeid(1).name() || percent<1 || percent>99){
         throw std::domain_error("Wrong parameter!");
     }
     for(int i=0; i<row; i++){
@@ -56,7 +56,7 @@ void Lights::invert(string& image_name, int& row, int& column, int& max_intensit
 void Lights::contrast(string& image_name, int& row, int& column, int& max_intensity, vector <vector<int> >& vect){
     cout << "How many percent of contrast enhancement do you want? (1-20)" << endl;
     cin >> percent;
-    if(typeid(percent).name()!=typeid(1).name || percent<1 || percent>99){
+    if(typeid(percent).name()!=typeid(1).name() || percent<1 || percent>99){
         throw std::domain_error("Wrong parameter!");
     }
     for(int i=0; i<row; i++){
