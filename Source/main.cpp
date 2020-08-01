@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stdexcept>
+#include <cstdio>
 #include "Read_in.h"
 #include "Lights.h"
 #include "Transform.h"
@@ -9,6 +11,8 @@
 using namespace std;
 
 int main(){
+
+try{
 
 string next="y";
 
@@ -68,5 +72,11 @@ while(next=="y"){
     cout << "\nDo you want to continue your work on other images? Press (y) or (n)!" << endl;
     cin >> next;
 }
+}
+catch(std::exception &e){
+    fprintf(stderr, e.what());
+    return 1;
+    }
+
 return 0;
 }
