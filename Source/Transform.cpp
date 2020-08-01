@@ -13,6 +13,9 @@ void Transform::rotation(string& image_name, int& row, int& column, int& max_int
 
     cout << "Angle of rotation? (90, 180, 270)" << endl;
     cin >> angle;
+    if(angle!=90 || angle!=180 || angle!=270){
+        throw std::domain_error("Wrong parameter!");
+    }
 
     if(angle==90){
         for(int i=0; i<row; i++){
@@ -53,6 +56,9 @@ void Transform::mirroring(string& image_name, int& row, int& column, int& max_in
 
     cout << "Mirroring to x-axis: press (x). Mirroring to y-axis: press (y)." << endl;
     cin >> axis;
+    if(axis!="x" || axis!="y"){
+        throw std::domain_error("Wrong parameter!");
+    }
 
     if(axis=="x"){
         for(int i=0; i<row; i++){
