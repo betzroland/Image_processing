@@ -1,2 +1,2 @@
 # Image_processing
-Basic image processing program for greyscale images (.pgm format).
+Basic image processing program for grayscale images (.pgm format).
