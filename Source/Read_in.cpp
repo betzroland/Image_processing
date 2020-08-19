@@ -55,7 +55,7 @@ void Read_in::load(){
     }
 
     //---------------------------------------------------------------------------------
-    //Create a vector form data string, which represents the pixel values of the image.
+    //Creating a vector from data string, which represents the pixel values of the image.
 
     string stream_temp2;
     stringstream ss2;
@@ -68,5 +68,5 @@ void Read_in::load(){
             stringstream(stream_temp2) >> vect_temp[i][j];
         }
     }
-    vect.swap(vect_temp);   // Exchange of memory addresses.
+    vect.swap(vect_temp);
 }

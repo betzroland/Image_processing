@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void Convolve::blur(string& image_name, int& row, int& column, int& max_intensity, vector <vector<int> >& vect){
+void Convolve::blur(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect){
 
     vector <vector<int> > vect_temp(row, vector<int>(column, 0));
     for(int i=0; i<row; i++){
@@ -77,12 +77,12 @@ void Convolve::blur(string& image_name, int& row, int& column, int& max_intensit
             a=0.0;
         }
     }
-    string output=image_name+"_blur"+intToString(level)+".pgm";
+    string output=image_name+"_blur"+to_string(level)+".pgm";
     save(output, row, column, max_intensity, vect);
     cout << "The modified image has been saved with a name: "<< image_name << "_blur" << level << endl;
 }
 
-void Convolve::edge(string& image_name, int& row, int& column, int& max_intensity, vector <vector<int> >& vect){
+void Convolve::edge(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect){
 
     vector <vector<int> > vect_temp(row, vector<int>(column, 0));
     for(int i=0; i<row; i++){
@@ -133,7 +133,7 @@ void Convolve::edge(string& image_name, int& row, int& column, int& max_intensit
     cout << "The modified image has been saved with a name: "<< image_name << "_edges" << endl;
 }
 
-void Convolve::sharpen(string& image_name, int& row, int& column, int& max_intensity, vector <vector<int> >& vect){
+void Convolve::sharpen(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect){
 
     vector <vector<int> > vect_temp1(row, vector<int>(column, 0));
     vector <vector<int> > vect_temp2(row, vector<int>(column, 0));

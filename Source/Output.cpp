@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void save(string& output_filename, int& row, int& column, int& max_intensity, vector <vector<int> >& vect){
+void save(const string output_filename, const int row, const int column, const int max_intensity, vector <vector<int> >& vect){
 
     string filepath="C:/Users/betzr/Desktop/Images/PGM/Modified/"+output_filename;
     ofstream savedata(filepath.c_str());
@@ -30,11 +30,3 @@ void save(string& output_filename, int& row, int& column, int& max_intensity, ve
     }
     savedata.close();
 }
-
-string intToString(int t){
-            string s;
-            ostringstream out;
-            out << t;
-            s = out.str();
-            return s;
-        }

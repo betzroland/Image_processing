@@ -6,11 +6,10 @@
 
 using namespace std;
 
-void Transform::rotation(string& image_name, int& row, int& column, int& max_intensity, vector <vector<int> >& vect){
+void Transform::rotation(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect){
 
     vector <vector<int> > vect_temp(row, vector<int>(column, 0));
     vect.swap(vect_temp);
-
     cout << "Angle of rotation? (90, 180, 270)" << endl;
     cin >> angle;
     if(angle!=90 || angle!=180 || angle!=270){
@@ -49,7 +48,7 @@ void Transform::rotation(string& image_name, int& row, int& column, int& max_int
     }
 }
 
-void Transform::mirroring(string& image_name, int& row, int& column, int& max_intensity, vector <vector<int> >& vect){
+void Transform::mirroring(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect){
 
     vector <vector<int> > vect_temp(row, vector<int>(column, 0));
     vect.swap(vect_temp);
