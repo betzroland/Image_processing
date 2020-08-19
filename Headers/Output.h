@@ -4,9 +4,6 @@
 using namespace std;
 
 //A function for saving the modified images.
-void save(string& filename, int& row, int& column, int& max_intensity, vector <vector<int> >& vect);
-
-//Just an auxiliary function, used at writing output file names. It converts an int type to a string.
-string intToString(int t);
+void save(const string output_filename, const int row, const int column, const int max_intensity, vector <vector<int> >& vect);
 
 #endif // OUTPUT_H_INCLUDED
