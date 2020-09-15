@@ -1,5 +1,6 @@
 #ifndef LIGHTS_H_INCLUDED
 #define LIGHTS_H_INCLUDED
+#include "Read_in.h"
 
 using namespace std;
 
@@ -8,16 +9,16 @@ public:
     int percent;
 
     //Reduces the values of each pixels by the percent given by the user.
-    void darken(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect);
+    void darken(Read_in& read);
 
     //Increases the values of each pixels by the percent given by the user.
-    void brighten(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect);
+    void brighten(Read_in& read);
 
     //Inverting each pixels: light->dark and dark->light
-    void invert(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect);
+    void invert(Read_in& read);
 
     //Increases the difference between the lighter and darker parts of the image.
-    void contrast(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect);
+    void contrast(Read_in& read);
 
 };
 

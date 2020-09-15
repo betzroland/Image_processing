@@ -1,9 +1,10 @@
 #ifndef OUTPUT_H_INCLUDED
 #define OUTPUT_H_INCLUDED
+#include "Read_in.h"
 
 using namespace std;
 
 //A function for saving the modified images.
-void save(const string output_filename, const int row, const int column, const int max_intensity, vector <vector<int> >& vect);
+void save(Read_in& read);
 
 #endif // OUTPUT_H_INCLUDED
