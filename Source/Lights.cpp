@@ -7,72 +7,64 @@
 
 using namespace std;
 
-void Lights::darken(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect){
+void Lights::darken(Read_in& read){
     cout << "By how many percent? (1-99)" << endl;
     cin >> percent;
     if(typeid(percent).name()!=typeid(1).name() || percent<1 || percent>99){
         throw std::domain_error("Wrong parameter!");
     }
-    for(int i=0; i<row; i++){
-        for(int j=0; j<column; j++){
-            vect[i][j]=vect[i][j]*(1-(percent/100.0));
+    for(int i=0; i<read.row; i++){
+        for(int j=0; j<read.column; j++){
+            read.vect[i][j]=read.vect[i][j]*(1-(percent/100.0));
         }
     }
-    string output=image_name+"_darkened_"+to_string(percent)+"%.pgm";
-    save(output, row, column, max_intensity, vect);
-    cout << "The modified image has been saved with a name: "<< image_name << "_darkened_" << to_string(percent) << "%" << endl;
+    read.image_name=read.image_name+"_darkened_"+to_string(percent)+"%.pgm";
 }
 
-void Lights::brighten(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect){
+void Lights::brighten(Read_in& read){
     cout << "By how many percent? (1-99)" << endl;
     cin >> percent;
     if(typeid(percent).name()!=typeid(1).name() || percent<1 || percent>99){
         throw std::domain_error("Wrong parameter!");
     }
-    for(int i=0; i<row; i++){
-        for(int j=0; j<column; j++){
-            if(vect[i][j]+(percent/100.0)*vect[i][j]<max_intensity){
-                vect[i][j]=vect[i][j]*(1+(percent/100.0));
+    for(int i=0; i<read.row; i++){
+        for(int j=0; j<read.column; j++){
+            if(read.vect[i][j]+(percent/100.0)*read.vect[i][j]<read.max_intensity){
+                read.vect[i][j]=read.vect[i][j]*(1+(percent/100.0));
             }
-            else vect[i][j]=max_intensity;
+            else read.vect[i][j]=read.max_intensity;
         }
     }
-    string output=image_name+"_brightened_"+to_string(percent)+"%.pgm";
-    save(output, row, column, max_intensity, vect);
-    cout << "The modified image has been saved with a name: "<< image_name << "_brightened_" << to_string(percent) << "%" << endl;
+    read.image_name=read.image_name+"_brightened_"+to_string(percent)+"%.pgm";
 }
 
-void Lights::invert(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect){
-    for(int i=0; i<row; i++){
-        for(int j=0; j<column; j++){
-            vect[i][j]=max_intensity-vect[i][j];
+void Lights::invert(Read_in& read){
+    for(int i=0; i<read.row; i++){
+        for(int j=0; j<read.column; j++){
+            read.vect[i][j]=read.max_intensity-read.vect[i][j];
         }
     }
-    string output=image_name+"_inverted.pgm";
-    save(output, row, column, max_intensity, vect);
-    cout << "The modified image has been saved with a name: "<< image_name << "_inverted" << endl;
+    read.image_name=read.image_name+"_inverted.pgm";
 }
 
-void Lights::contrast(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect){
+void Lights::contrast(Read_in& read){
     cout << "How many percent of contrast enhancement do you want? (1-20)" << endl;
     cin >> percent;
     if(typeid(percent).name()!=typeid(1).name() || percent<1 || percent>99){
         throw std::domain_error("Wrong parameter!");
     }
-    for(int i=0; i<row; i++){
-        for(int j=0; j<column; j++){
-            if(vect[i][j]<(max_intensity/2.0)){
-                vect[i][j]=vect[i][j]*(1-(percent/100.0));
+    for(int i=0; i<read.row; i++){
+        for(int j=0; j<read.column; j++){
+            if(read.vect[i][j]<(read.max_intensity/2.0)){
+                read.vect[i][j]=read.vect[i][j]*(1-(percent/100.0));
             }
-            if(vect[i][j]>(max_intensity/2.0) && (vect[i][j]+vect[i][j]*(percent/100.0))<max_intensity){
-                vect[i][j]=vect[i][j]*(1+(percent/100.0));
+            if(read.vect[i][j]>(read.max_intensity/2.0) && (read.vect[i][j]+read.vect[i][j]*(percent/100.0))<read.max_intensity){
+                read.vect[i][j]=read.vect[i][j]*(1+(percent/100.0));
             }
-            if(vect[i][j]>(max_intensity/2.0) && (vect[i][j]+vect[i][j]*(percent/100.0))>max_intensity){
-                vect[i][j]=max_intensity;
+            if(read.vect[i][j]>(read.max_intensity/2.0) && (read.vect[i][j]+read.vect[i][j]*(percent/100.0))>read.max_intensity){
+                read.vect[i][j]=read.max_intensity;
             }
         }
     }
-    string output=image_name+"_contrast_+"+to_string(percent)+"%.pgm";
-    save(output, row, column, max_intensity, vect);
-    cout << "The modified image has been saved with a name: "<< image_name << "_contrast_+" << to_string(percent) << "%" << endl;
+    read.image_name=read.image_name+"_contrast_+"+to_string(percent)+"%.pgm";
 }

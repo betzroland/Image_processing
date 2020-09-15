@@ -6,10 +6,10 @@
 
 using namespace std;
 
-void Transform::rotation(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect){
+void Transform::rotation(Read_in& read){
 
-    vector <vector<int> > vect_temp(row, vector<int>(column, 0));
-    vect.swap(vect_temp);
+    vector <vector<int> > vect_temp(read.row, vector<int>(read.column, 0));
+    read.vect.swap(vect_temp);
     cout << "Angle of rotation? (90, 180, 270)" << endl;
     cin >> angle;
     if(angle!=90 || angle!=180 || angle!=270){
@@ -17,66 +17,53 @@ void Transform::rotation(const string image_name, const int row, const int colum
     }
 
     if(angle==90){
-        for(int i=0; i<row; i++){
-            for(int j=0; j<column; j++){
-                vect[i][j]=vect_temp[j][(column-1)-i];
+        for(int i=0; i<read.row; i++){
+            for(int j=0; j<read.column; j++){
+                read.vect[i][j]=vect_temp[j][(read.column-1)-i];
             }
         }
-        string output=image_name+"_rotated_90.pgm";
-        save(output, row, column, max_intensity, vect);
-        cout << "The modified image has been saved with a name: "<< image_name << "_rotated_90" << endl;
+        read.image_name=read.image_name+"_rotated_90.pgm";
     }
     else if(angle==180){
-        for(int i=0; i<row; i++){
-            for(int j=0; j<column; j++){
-                vect[i][j]=vect_temp[(row-1)-i][(column-1)-j];
+        for(int i=0; i<read.row; i++){
+            for(int j=0; j<read.column; j++){
+                read.vect[i][j]=vect_temp[(read.row-1)-i][(read.column-1)-j];
             }
         }
-        string output=image_name+"_rotated_180.pgm";
-        save(output, row, column, max_intensity, vect);
-        cout << "The modified image has been saved with a name: "<< image_name << "_rotated_180" << endl;
+        read.image_name=read.image_name+"_rotated_180.pgm";
     }
     else if(angle==270){
-        for(int i=0; i<row; i++){
-            for(int j=0; j<column; j++){
-                vect[i][j]=vect_temp[(row-1)-j][i];
+        for(int i=0; i<read.row; i++){
+            for(int j=0; j<read.column; j++){
+                read.vect[i][j]=vect_temp[(read.row-1)-j][i];
             }
         }
-        string output=image_name+"_rotated_270.pgm";
-        save(output, row, column, max_intensity, vect);
-        cout << "The modified image has been saved with a name: "<< image_name << "_rotated_270" << endl;
+        read.image_name=read.image_name+"_rotated_270.pgm";
     }
 }
 
-void Transform::mirroring(const string image_name, const int row, const int column, const int max_intensity, vector <vector<int> >& vect){
+void Transform::mirroring(Read_in& read){
 
-    vector <vector<int> > vect_temp(row, vector<int>(column, 0));
-    vect.swap(vect_temp);
+    vector <vector<int> > vect_temp(read.row, vector<int>(read.column, 0));
+    read.vect.swap(vect_temp);
 
     cout << "Mirroring to x-axis: press (x). Mirroring to y-axis: press (y)." << endl;
     cin >> axis;
-    if(axis!="x" || axis!="y"){
-        throw std::domain_error("Wrong parameter!");
-    }
 
     if(axis=="x"){
-        for(int i=0; i<row; i++){
-            for(int j=0; j<column; j++){
-                vect[i][j]=vect_temp[(row-1)-i][j];
+        for(int i=0; i<read.row; i++){
+            for(int j=0; j<read.column; j++){
+                read.vect[i][j]=vect_temp[(read.row-1)-i][j];
             }
         }
-        string output=image_name+"_mirrored_to_x.pgm";
-        save(output, row, column, max_intensity, vect);
-        cout << "The modified image has been saved with a name: "<< image_name << "_mirrored_to_x" << endl;
+        read.image_name=read.image_name+"_mirrored_to_x.pgm";
     }
     else if(axis=="y"){
-        for(int i=0; i<row; i++){
-            for(int j=0; j<column; j++){
-                vect[i][j]=vect_temp[i][(column-1)-j];
+        for(int i=0; i<read.row; i++){
+            for(int j=0; j<read.column; j++){
+                read.vect[i][j]=vect_temp[i][(read.column-1)-j];
             }
         }
-        string output=image_name+"_mirrored_to_y.pgm";
-        save(output, row, column, max_intensity, vect);
-        cout << "The modified image has been saved with a name: "<< image_name << "_mirrored_to_y" << endl;
+        read.image_name=read.image_name+"_mirrored_to_y.pgm";
     }
 }
