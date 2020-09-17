@@ -10,10 +10,10 @@ public:
     string axis;
 
     //Rotates the image by 90, 180, or 270 degrees.
-    void rotation(Read_in& read);
+    void rotation(Image& image);
 
     //Mirrors the image to x or y axis.
-    void mirroring(Read_in& read);
+    void mirroring(Image& image);
 
 };
 

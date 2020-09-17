@@ -9,16 +9,16 @@ public:
     int percent;
 
     //Reduces the values of each pixels by the percent given by the user.
-    void darken(Read_in& read);
+    void darken(Image& image);
 
     //Increases the values of each pixels by the percent given by the user.
-    void brighten(Read_in& read);
+    void brighten(Image& image);
 
     //Inverting each pixels: light->dark and dark->light
-    void invert(Read_in& read);
+    void invert(Image& image);
 
     //Increases the difference between the lighter and darker parts of the image.
-    void contrast(Read_in& read);
+    void contrast(Image& image);
 
 };
 
