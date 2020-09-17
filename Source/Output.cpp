@@ -7,20 +7,20 @@
 
 using namespace std;
 
-void save(Read_in& read){
+void save(Image& image){
 
-    string filepath="C:/Users/betzr/Desktop/Images/PGM/Modified/"+read.image_name;
+    string filepath="C:/Users/betzr/Desktop/Images/PGM/Modified/"+image.image_name;
     ofstream savedata(filepath.c_str());
-    savedata << "P2\n" << read.column << " " << read.row << "\n" << read.max_intensity << "\n";
+    savedata << "P2\n" << image.column << " " << image.row << "\n" << image.max_intensity << "\n";
 
     //----------------------------------------------------------------------------------------------
     //Output files (also can be opened as text) will have 30 columns, but it doesn't really matters.
     //The only important thing is that the pixel values have to be separated by a whitespace.
 
     int rowbreak=0;
-    for(int i=0; i<read.row; i++){
-        for(int j=0; j<read.column; j++){
-            savedata << read.vect[i][j] << " ";
+    for(int i=0; i<image.row; i++){
+        for(int j=0; j<image.column; j++){
+            savedata << image.vect[i][j] << " ";
             rowbreak++;
             if(rowbreak==30){
                 savedata << "\n";
@@ -29,5 +29,5 @@ void save(Read_in& read){
         }
     }
     savedata.close();
-    cout << "The modified image has been saved with a name: "<< read.image_name << endl;
+    cout << "The modified image has been saved with a name: "<< image.image_name << endl;
 }

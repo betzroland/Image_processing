@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void Read_in::load(){
+void Image::load(){
 
     cout << "Write the name of the image (without format) you want to process!" << endl;
     cin >> image_name;
