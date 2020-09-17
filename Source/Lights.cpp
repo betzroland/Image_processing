@@ -3,68 +3,67 @@
 #include <vector>
 #include <typeinfo>
 #include "Lights.h"
-#include "Output.h"
 
 using namespace std;
 
-void Lights::darken(Read_in& read){
+void Lights::darken(Image& image){
     cout << "By how many percent? (1-99)" << endl;
     cin >> percent;
     if(typeid(percent).name()!=typeid(1).name() || percent<1 || percent>99){
         throw std::domain_error("Wrong parameter!");
     }
-    for(int i=0; i<read.row; i++){
-        for(int j=0; j<read.column; j++){
-            read.vect[i][j]=read.vect[i][j]*(1-(percent/100.0));
+    for(int i=0; i<image.row; i++){
+        for(int j=0; j<image.column; j++){
+            image.vect[i][j]=image.vect[i][j]*(1-(percent/100.0));
         }
     }
-    read.image_name=read.image_name+"_darkened_"+to_string(percent)+"%.pgm";
+    image.image_name=image.image_name+"_darkened_"+to_string(percent)+"%.pgm";
 }
 
-void Lights::brighten(Read_in& read){
+void Lights::brighten(Image& image){
     cout << "By how many percent? (1-99)" << endl;
     cin >> percent;
     if(typeid(percent).name()!=typeid(1).name() || percent<1 || percent>99){
         throw std::domain_error("Wrong parameter!");
     }
-    for(int i=0; i<read.row; i++){
-        for(int j=0; j<read.column; j++){
-            if(read.vect[i][j]+(percent/100.0)*read.vect[i][j]<read.max_intensity){
-                read.vect[i][j]=read.vect[i][j]*(1+(percent/100.0));
+    for(int i=0; i<image.row; i++){
+        for(int j=0; j<image.column; j++){
+            if(image.vect[i][j]+(percent/100.0)*image.vect[i][j]<image.max_intensity){
+                image.vect[i][j]=image.vect[i][j]*(1+(percent/100.0));
             }
-            else read.vect[i][j]=read.max_intensity;
+            else image.vect[i][j]=image.max_intensity;
         }
     }
-    read.image_name=read.image_name+"_brightened_"+to_string(percent)+"%.pgm";
+    image.image_name=image.image_name+"_brightened_"+to_string(percent)+"%.pgm";
 }
 
-void Lights::invert(Read_in& read){
-    for(int i=0; i<read.row; i++){
-        for(int j=0; j<read.column; j++){
-            read.vect[i][j]=read.max_intensity-read.vect[i][j];
+void Lights::invert(Image& image){
+    for(int i=0; i<image.row; i++){
+        for(int j=0; j<image.column; j++){
+            image.vect[i][j]=image.max_intensity-image.vect[i][j];
         }
     }
-    read.image_name=read.image_name+"_inverted.pgm";
+    image.image_name=image.image_name+"_inverted.pgm";
 }
 
-void Lights::contrast(Read_in& read){
+void Lights::contrast(Image& image){
     cout << "How many percent of contrast enhancement do you want? (1-20)" << endl;
     cin >> percent;
     if(typeid(percent).name()!=typeid(1).name() || percent<1 || percent>99){
         throw std::domain_error("Wrong parameter!");
     }
-    for(int i=0; i<read.row; i++){
-        for(int j=0; j<read.column; j++){
-            if(read.vect[i][j]<(read.max_intensity/2.0)){
-                read.vect[i][j]=read.vect[i][j]*(1-(percent/100.0));
+    for(int i=0; i<image.row; i++){
+        for(int j=0; j<image.column; j++){
+            if(image.vect[i][j]<(image.max_intensity/2.0)){
+                image.vect[i][j]=image.vect[i][j]*(1-(percent/100.0));
             }
-            if(read.vect[i][j]>(read.max_intensity/2.0) && (read.vect[i][j]+read.vect[i][j]*(percent/100.0))<read.max_intensity){
-                read.vect[i][j]=read.vect[i][j]*(1+(percent/100.0));
+            if(image.vect[i][j]>(image.max_intensity/2.0) && (image.vect[i][j]+image.vect[i][j]*(percent/100.0))<image.max_intensity){
+                image.vect[i][j]=image.vect[i][j]*(1+(percent/100.0));
             }
-            if(read.vect[i][j]>(read.max_intensity/2.0) && (read.vect[i][j]+read.vect[i][j]*(percent/100.0))>read.max_intensity){
-                read.vect[i][j]=read.max_intensity;
+            if(image.vect[i][j]>(image.max_intensity/2.0) && (image.vect[i][j]+image.vect[i][j]*(percent/100.0))>image.max_intensity){
+                image.vect[i][j]=image.max_intensity;
             }
         }
     }
-    read.image_name=read.image_name+"_contrast_+"+to_string(percent)+"%.pgm";
+    image.image_name=image.image_name+"_contrast_+"+to_string(percent)+"%.pgm";
 }

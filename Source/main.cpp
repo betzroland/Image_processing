@@ -7,7 +7,6 @@
 #include "Lights.h"
 #include "Transform.h"
 #include "Convolve.h"
-#include "Output.h"
 
 using namespace std;
 
@@ -19,8 +18,8 @@ string next="y";
 
 while(next=="y"){
 
-    Read_in read;
-    read.load();
+    Image image;
+    image.load();
 
     string functions;
     cout << "What kind of function do you want to apply? (Light, Transform, Convolution)" << endl;
@@ -33,20 +32,20 @@ while(next=="y"){
             cout << "Choose a specific operation! (Darken, Brighten, Invert, Contrast+)" << endl;
             cin >> str;
             if(str=="Darken"){
-                light.darken(read);
-                save(read);
+                light.darken(image);
+                image.save();
             }
             else if(str=="Brighten"){
-                light.brighten(read);
-                save(read);
+                light.brighten(image);
+                image.save();
             }
             else if(str=="Invert"){
-                light.invert(read);
-                save(read);
+                light.invert(image);
+                image.save();
             }
             else if(str=="Contrast+"){
-                light.contrast(read);
-                save(read);
+                light.contrast(image);
+                image.save();
             }
     }
     else if(functions=="Transform"){
@@ -54,29 +53,32 @@ while(next=="y"){
             cout << "Choose a specific operation! (Rotate, Mirror)" << endl;
             cin >> str;
             if(str=="Rotate"){
-                transf.rotation(read);
-                save(read);
+                transf.rotation(image);
+                image.save();
             }
             else if(str=="Mirror"){
-                transf.mirroring(read);
-                save(read);
+                transf.mirroring(image);
+                image.save();
             }
     }
     else if(functions=="Convolution"){
-            Convolve convolve;
+            Convolve convolve(image);
             cout << "Choose a specific operation! (Blur, Sharpen, Edge)" << endl;
             cin >> str;
             if(str=="Blur"){
-                convolve.blur(read);
-                save(read);
+                convolve.blur(image);
+                image.image_name=image.image_name+"_blurred.pgm";
+                image.save();
             }
             else if(str=="Edge"){
-                convolve.edge(read);
-                save(read);
+                convolve.edge(image);
+                image.image_name=image.image_name+"_edged.pgm";
+                image.save();
             }
             else if(str=="Sharpen"){
-                convolve.sharpen(read);
-                save(read);
+                convolve.sharpen(image);
+                image.image_name=image.image_name+"_sharpened.pgm";
+                image.save();
             }
     }
     cout << "\nDo you want to continue your work on other images? Press (y) or (n)!" << endl;
