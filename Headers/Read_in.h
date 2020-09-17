@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class Read_in{ // class Image ???
+class Image{
 public:
     int column, row, max_intensity;
     string header, data;

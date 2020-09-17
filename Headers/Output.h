@@ -5,6 +5,6 @@
 using namespace std;
 
 //A function for saving the modified images.
-void save(Read_in& read);
+void save(Image& image);
 
 #endif // OUTPUT_H_INCLUDED
