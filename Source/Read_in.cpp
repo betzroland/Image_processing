@@ -18,8 +18,9 @@ void Image::load(){
     int rowcounter=1;
 
     //------------------------------------------------------------------------
-    //Separating header and data strings, without comment lines (marked by #).
+    //Separating header and pixel_data strings, without comment lines (marked by #).
 
+    string header, pixel_data;
     while(!myfile1.eof()){
         getline(myfile1, str_temp);
         if(rowcounter<=3 && str_temp.find('#')!=0){
@@ -27,7 +28,7 @@ void Image::load(){
             rowcounter++;
         }
         else if(rowcounter>3 && str_temp.find('#')!=0){
-            data.append(str_temp+"\n");
+            pixel_data.append(str_temp+"\n");
             rowcounter++;
         }
     }
@@ -36,37 +37,58 @@ void Image::load(){
     //-------------------------------------------------------
     //Get the values of column, row and max "color" intensity.
 
-    string stream_temp1;
-    stringstream ss1;
+    string stream_temp;
+    stringstream ss;
     int a=1;
-    ss1 << header;
+    ss << header;
 
-    while(ss1 >> stream_temp1){
+    while(ss >> stream_temp){
         if(a==2){
-            stringstream(stream_temp1) >> column;
+            stringstream(stream_temp) >> column;
         }
         if(a==3){
-            stringstream(stream_temp1) >> row;
+            stringstream(stream_temp) >> row;
         }
         if(a==4){
-            stringstream(stream_temp1) >> max_intensity;
+            stringstream(stream_temp) >> max_intensity;
         }
         a++;
     }
 
     //---------------------------------------------------------------------------------
-    //Creating a vector from data string, which represents the pixel values of the image.
+    //Creating a vector from pixel_data string, which represents the pixel values of the image.
 
-    string stream_temp2;
-    stringstream ss2;
-    ss2 << data;
+    stream_temp.clear();
+    ss.clear();
+    ss << pixel_data;
 
     vector <vector<int> > vect_temp(row, vector<int>(column, 0));
     for(int i=0; i<row; i++){
         for(int j=0; j<column; j++){
-            ss2 >> stream_temp2;
-            stringstream(stream_temp2) >> vect_temp[i][j];
+            ss >> stream_temp;
+            stringstream(stream_temp) >> vect_temp[i][j];
         }
     }
     vect.swap(vect_temp);
+}
+
+void Image::save(){
+
+    string filepath="C:/Users/betzr/Desktop/Images/PGM/Modified/"+image_name;
+    ofstream savedata(filepath.c_str());
+    savedata << "P2\n" << column << " " << row << "\n" << max_intensity << "\n";
+
+    int rowbreak=0;
+    for(int i=0; i<row; i++){
+        for(int j=0; j<column; j++){
+            savedata << vect[i][j] << " ";
+            rowbreak++;
+            if(rowbreak==30){
+                savedata << "\n";
+                rowbreak=0;
+            }
+        }
+    }
+    savedata.close();
+    cout << "The modified image has been saved with a name: "<< image_name << endl;
 }

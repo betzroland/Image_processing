@@ -3,7 +3,6 @@
 #include <vector>
 #include <math.h>
 #include "Convolve.h"
-#include "Output.h"
 
 using namespace std;
 
@@ -36,46 +35,15 @@ void Convolve::edge(Image& image){
 
 void Convolve::sharpen(Image& image){
 
-    vector <vector<int> > vect_temp;
-    vect_temp=image_copyvector;
+    vector <vector<int> > vect_edged;
+    vect_edged=image_copyvector;
 
     Convolve::edge(image);
 
-    //-----------------------------------------------------------------------------------------------------
-    //The comparison always done with the pixels of the original picture, then we modify the temp_vectors,
-    //then finally the image vector gets all the values of the modified temp_vector.
+    vect_edged.swap(image.vect); // image.vect becomes filled with original values,
+                                 // and vect_edged gets the pixelvalues after "edging"
 
-    //Whenever an "edge" pixel is found (a pixel with higher intensity), its intensity will be enhanced further,
-    //since it marks a brighter edge on the original image. At the same time we also inspect its neighbour
-    //pixels, and if a darker pixel is found, its intensity will be reduced further, so all in all, the
-    //edges on the image will appear more distinct.
-    //The numbers used below are a bit arbitrary, but it works quite well.
-
-    for(int i=1; i<image.row-1; i++){
-        for(int j=1; j<image.column-1; j++){
-            if(image.vect[i][j]>150 && image_copyvector[i][j]*1.2<image.max_intensity){
-                vect_temp[i][j]=vect_temp[i][j]*1.2;
-                for(int k=0; k<3; k++){
-                    for(int l=0; l<3; l++){
-                        if(image_copyvector[i+k-1][j+l-1]<0.9*image_copyvector[i][j]){
-                            vect_temp[i+k-1][j+l-1]=0.8*vect_temp[i+k-1][j+l-1];
-                        }
-                    }
-                }
-            }
-            else if(image.vect[i][j]>150 && image_copyvector[i][j]*1.2>image.max_intensity){
-                vect_temp[i][j]=image.max_intensity;
-                for(int k=0; k<3; k++){
-                    for(int l=0; l<3; l++){
-                        if(image_copyvector[i+k-1][j+l-1]<0.9*image_copyvector[i][j]){
-                            vect_temp[i+k-1][j+l-1]=0.8*vect_temp[i+k-1][j+l-1];
-                        }
-                    }
-                }
-            }
-        }
-    }
-    image.vect.swap(vect_temp);
+    Convolve::sharpen_along_edges(image, vect_edged);
 }
 
 int Convolve::apply_Gaussian_on_pixel(const int i, const int j){
@@ -103,7 +71,32 @@ int Convolve::apply_Sobel_on_pixel(const int i, const int j){
 void Convolve::normalize_pixelvalues(Image& image, float G_max){
     for(int i=1; i<image.row-1; i++){
         for(int j=1; j<image.column-1; j++){
-            image.vect[i][j]=(int)((image.vect[i][j]/G_max)*image.max_intensity); // Normalizing.
+            image.vect[i][j]=(int)((image.vect[i][j]/G_max)*image.max_intensity);
+        }
+    }
+}
+
+void Convolve::sharpen_along_edges(Image& image, vector <vector<int> >& vect_edged){
+    for(int i=1; i<image.row-1; i++){
+        for(int j=1; j<image.column-1; j++){
+            if(vect_edged[i][j]>150 && image_copyvector[i][j]*1.2<image.max_intensity){
+                image.vect[i][j]=image_copyvector[i][j]*1.2;
+                Convolve::darken_neighbourpixels(image, i, j);
+            }
+            else if(vect_edged[i][j]>150 && image_copyvector[i][j]*1.2>image.max_intensity){
+                image.vect[i][j]=image.max_intensity;
+                Convolve::darken_neighbourpixels(image, i, j);
+            }
+        }
+    }
+}
+
+void Convolve::darken_neighbourpixels(Image& image, int i, int j){
+    for(int k=0; k<3; k++){
+        for(int m=0; m<3; m++){
+            if(image_copyvector[i+k-1][j+m-1]<0.9*image_copyvector[i][j]){
+                image.vect[i+k-1][j+m-1]=0.8*image_copyvector[i+k-1][j+m-1];
+            }
         }
     }
 }

@@ -6,11 +6,12 @@ using namespace std;
 class Image{
 public:
     int column, row, max_intensity;
-    string header, data;
     string image_name;
     vector <vector<int> > vect;
 
     void load();
+
+    void save();
 };
 
 #endif // READ_IN_H_INCLUDED

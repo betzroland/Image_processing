@@ -6,14 +6,23 @@ using namespace std;
 
 class Transform{
 public:
-    int angle;
-    string axis;
+    vector <vector<int> > image_copyvector;
 
-    //Rotates the image by 90, 180, or 270 degrees.
+    Transform(Image& image);
+
     void rotation(Image& image);
 
-    //Mirrors the image to x or y axis.
     void mirroring(Image& image);
+
+    void rotate_by_90(Image& image);
+
+    void rotate_by_180(Image& image);
+
+    void rotate_by_270(Image& image);
+
+    void mirror_to_x_axis(Image& image);
+
+    void mirror_to_y_axis(Image& image);
 
 };
 

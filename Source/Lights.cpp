@@ -3,7 +3,6 @@
 #include <vector>
 #include <typeinfo>
 #include "Lights.h"
-#include "Output.h"
 
 using namespace std;
 
@@ -58,10 +57,10 @@ void Lights::contrast(Image& image){
             if(image.vect[i][j]<(image.max_intensity/2.0)){
                 image.vect[i][j]=image.vect[i][j]*(1-(percent/100.0));
             }
-            if(image.vect[i][j]>(image.max_intensity/2.0) && (image.vect[i][j]+image.vect[i][j]*(percent/100.0))<image.max_intensity){
+            if(image.vect[i][j]>(image.max_intensity/2.0) && (image.vect[i][j]*(1+(percent/100.0)))<image.max_intensity){
                 image.vect[i][j]=image.vect[i][j]*(1+(percent/100.0));
             }
-            if(image.vect[i][j]>(image.max_intensity/2.0) && (image.vect[i][j]+image.vect[i][j]*(percent/100.0))>image.max_intensity){
+            if(image.vect[i][j]>(image.max_intensity/2.0) && (image.vect[i][j]*(1+(percent/100.0)))>image.max_intensity){
                 image.vect[i][j]=image.max_intensity;
             }
         }
