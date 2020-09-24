@@ -2,7 +2,7 @@
 #define CONTROLLER_H_INCLUDED
 #include <iostream>
 #include "Base.h"
-#include "Darkening.h"
+#include "Luminosity.h"
 #include "Rotation.h"
 #include "Blurring.h"
 
