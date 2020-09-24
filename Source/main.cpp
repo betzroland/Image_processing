@@ -2,19 +2,18 @@
 #include "Base.h"
 #include "Darkening.h"
 #include "Rotation.h"
+#include "Blurring.h"
+#include "Controller.h"
 
 using namespace std;
 
 int main()
 {
-    /*Darkening darkened;
-    darkened.load();
-    darkened.operation();
-    darkened.save();*/
 
-    Rotation rotated;
-    //rotated.load();
-    rotated.operation();
-    rotated.save();
+    Controller::controller();
+
+    /*Blurring blurred;
+    blurred.operation();
+    blurred.save();*/
     return 0;
 }

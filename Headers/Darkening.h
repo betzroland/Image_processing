@@ -4,6 +4,8 @@
 
 class Darkening : public Base{
 public:
+    Darkening(std::string name);
+
     void operation();
 };
 

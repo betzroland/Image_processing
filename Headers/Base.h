@@ -9,7 +9,7 @@ protected:
     std::vector <std::vector<int> > vect;
 
 public:
-    Base();
+    //Base();
 
     void load();
 

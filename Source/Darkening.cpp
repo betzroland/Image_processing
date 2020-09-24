@@ -6,6 +6,10 @@
 
 using namespace std;
 
+Darkening::Darkening(string name){
+    image_name=name;
+}
+
 void Darkening::operation(){
 
     int percent;
@@ -21,4 +25,3 @@ void Darkening::operation(){
     }
     image_name=image_name+"_darkened_"+to_string(percent)+"%.pgm";
 }
-

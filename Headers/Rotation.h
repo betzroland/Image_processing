@@ -7,7 +7,7 @@ class Rotation : public Base{
 private:
     std::vector<std::vector<int> > image_copyvector;
 public:
-    Rotation();
+    Rotation(std::string name);
 
     void operation();
 

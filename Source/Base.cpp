@@ -7,10 +7,10 @@
 
 using namespace std;
 
-Base::Base(){
+void Base::load(){
 
-    cout << "Write the name of the image (without format) you want to process!" << endl;
-    cin >> image_name;
+    //cout << "Write the name of the image (without format) you want to process!" << endl;
+    //cin >> image_name;
     string filepath="C:/Users/betzr/Desktop/Images/PGM/Source/"+image_name+".pgm";
     ifstream myfile1(filepath.c_str());
 
