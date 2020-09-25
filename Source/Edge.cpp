@@ -6,12 +6,11 @@
 
 using namespace std;
 
-Edge::Edge(string name){
-    image_name=name;
+Edge::Edge(string name) : Base(name){
+    image_copyvector=vect;
 }
 
 void Edge::operation(){
-    image_copyvector=vect;
     double G_max=0;
     for(int i=1; i<row-1; i++){
         for(int j=1; j<column-1; j++){

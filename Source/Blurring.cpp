@@ -4,13 +4,11 @@
 
 using namespace std;
 
-Blurring::Blurring(string name){
-    image_name=name;
+Blurring::Blurring(string name) : Base(name){
+    image_copyvector=vect;
 }
 
 void Blurring::operation(){
-
-    image_copyvector=vect;
 
     for(int i=2; i<row-2; i++){
         for(int j=2; j<column-2; j++){

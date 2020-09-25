@@ -10,9 +10,7 @@ protected:
     std::vector <std::vector<int> > vect;
 
 public:
-    //Base();
-
-    void load();
+    Base(std::string name);
 
     virtual void operation()=0;
 

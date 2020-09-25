@@ -24,7 +24,6 @@ while(next=="y"){
         case change_luminosity :
             {
                 Luminosity luminosity(name);
-                luminosity.load();
                 luminosity.operation();
                 luminosity.save();
             break;
@@ -32,7 +31,6 @@ while(next=="y"){
         case inversion :
             {
                 Inversion inversion(name);
-                inversion.load();
                 inversion.operation();
                 inversion.save();
             break;
@@ -40,7 +38,6 @@ while(next=="y"){
         case contrast_enhancement :
             {
                 Contrast contrast(name);
-                contrast.load();
                 contrast.operation();
                 contrast.save();
                 break;
@@ -48,7 +45,6 @@ while(next=="y"){
         case rotation :
             {
                 Rotation rotated(name);
-                rotated.load();
                 rotated.operation();
                 rotated.save();
                 break;
@@ -56,7 +52,6 @@ while(next=="y"){
         case blurring :
             {
                 Blurring blurred(name);
-                blurred.load();
                 blurred.operation();
                 blurred.save();
                 break;
@@ -64,7 +59,6 @@ while(next=="y"){
         case edge_detection :
             {
                 Edge edge(name);
-                edge.load();
                 edge.operation();
                 edge.save();
                 break;

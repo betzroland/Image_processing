@@ -3,8 +3,7 @@
 
 using namespace std;
 
-Inversion::Inversion(string name){
-    image_name=name;
+Inversion::Inversion(string name) : Base(name){
 }
 
 void Inversion::operation(){

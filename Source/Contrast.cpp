@@ -6,8 +6,7 @@
 
 using namespace std;
 
-Contrast::Contrast(string name){
-    image_name=name;
+Contrast::Contrast(string name) : Base(name){
 }
 
 void Contrast::operation(){

@@ -7,8 +7,8 @@
 
 using namespace std;
 
-void Base::load(){
-
+Base::Base(string name){
+    image_name=name;
     string filepath="C:/Users/betzr/Desktop/Images/PGM/Source/"+image_name+".pgm";
     ifstream myfile1(filepath.c_str());
 

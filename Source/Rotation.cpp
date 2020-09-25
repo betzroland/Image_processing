@@ -5,13 +5,11 @@
 
 using namespace std;
 
-Rotation::Rotation(string name){
-    image_name=name;
+Rotation::Rotation(string name) : Base(name){
+    image_copyvector=vect;
 }
 
 void Rotation::operation(){
-
-    image_copyvector=vect;
 
     int angle_of_rotation;
     cout << "Type the angle of rotation: (90, 180, 270)" << endl;

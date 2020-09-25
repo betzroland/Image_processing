@@ -6,8 +6,7 @@
 
 using namespace std;
 
-Luminosity::Luminosity(string name){
-    image_name=name;
+Luminosity::Luminosity(string name) : Base(name){
 }
 
 void Luminosity::operation(){
