@@ -14,7 +14,7 @@ void Rotation::operation(){
     image_copyvector=vect;
 
     int angle_of_rotation;
-    cout << "Angle_of_rotation? (90, 180, 270)" << endl;
+    cout << "Type the angle of rotation: (90, 180, 270)" << endl;
     cin >> angle_of_rotation;
 
     switch(angle_of_rotation){

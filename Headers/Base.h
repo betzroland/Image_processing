@@ -1,6 +1,7 @@
 #ifndef BASE_H_INCLUDED
 #define BASE_H_INCLUDED
 #include <vector>
+#include <string>
 
 class Base{
 protected:

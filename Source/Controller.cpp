@@ -12,12 +12,12 @@ while(next=="y"){
     cout << "Write the name of the image (without format) you want to process!" << endl;
     cin >> name;
     enum Options {change_luminosity=1, inversion=2, contrast_enhancement=3, rotation=4,
-                                    mirroring=5, blurring=6, edge_detection=7, sharpening=8};
+                                                    blurring=5, edge_detection=6, sharpening=7};
     int options;
     cout << "Choose an operation you want to apply!"
                 "\n\nChange luminosity -> press 1\nInversion -> press 2\n"
-                    "Contrast enhancement -> press 3\nRotation -> press 4\nMirroring -> press 5\n"
-                        "Blurring -> press 6\nEdge detection -> press 7\nSharpening -> press 8\n" << endl;
+                        "Contrast enhancement -> press 3\nRotation -> press 4\n"
+                            "Blurring -> press 5\nEdge detection -> press 6\nSharpening -> press 7\n" << endl;
     cin >> options;
 
     switch(options){
@@ -31,12 +31,18 @@ while(next=="y"){
             }
         case inversion :
             {
-                cout << "ok" << endl;
-                break;
+                Inversion inversion(name);
+                inversion.load();
+                inversion.operation();
+                inversion.save();
+            break;
             }
         case contrast_enhancement :
             {
-                cout << "ok" << endl;
+                Contrast contrast(name);
+                contrast.load();
+                contrast.operation();
+                contrast.save();
                 break;
             }
         case rotation :
@@ -47,24 +53,25 @@ while(next=="y"){
                 rotated.save();
                 break;
             }
-        case mirroring :
-            {
-                cout << "ok" << endl;
-                break;
-            }
         case blurring :
             {
-                cout << "ok" << endl;
+                Blurring blurred(name);
+                blurred.load();
+                blurred.operation();
+                blurred.save();
                 break;
             }
         case edge_detection :
             {
-                cout << "ok" << endl;
+                Edge edge(name);
+                edge.load();
+                edge.operation();
+                edge.save();
                 break;
             }
         case sharpening :
             {
-                cout << "ok" << endl;
+
                 break;
             }
     }
