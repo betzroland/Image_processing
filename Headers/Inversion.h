@@ -6,6 +6,8 @@ class Inversion : public Base{
 public:
     Inversion(std::string name);
 
+    ~Inversion() { };
+
     void operation();
 };
 

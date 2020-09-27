@@ -6,6 +6,8 @@ class Contrast : public Base{
 public:
     Contrast(std::string name);
 
+    ~Contrast() { };
+
     void operation();
 };
 

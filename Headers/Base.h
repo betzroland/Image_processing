@@ -12,6 +12,8 @@ protected:
 public:
     Base(std::string name);
 
+    virtual ~Base() { };
+
     virtual void operation()=0;
 
     void save();

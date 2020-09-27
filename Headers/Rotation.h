@@ -9,6 +9,8 @@ private:
 public:
     Rotation(std::string name);
 
+    ~Rotation() { };
+
     void operation();
 
     void rotate_by_90();

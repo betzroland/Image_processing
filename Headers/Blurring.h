@@ -13,8 +13,11 @@ private:
                                 {1.5/d, 2.25/d, 3/d, 2.25/d, 1.5/d},
                                 {1/d, 1.5/d, 2/d, 1.5/d, 1/d}
                                 };
+
 public:
     Blurring(std::string name);
+
+    ~Blurring() { };
 
     void operation();
 

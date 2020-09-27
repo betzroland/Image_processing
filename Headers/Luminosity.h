@@ -6,6 +6,8 @@ class Luminosity : public Base{
 public:
     Luminosity(std::string name);
 
+    ~Luminosity() { };
+
     void operation();
 };
 

@@ -3,8 +3,7 @@
 
 using namespace std;
 
-Inversion::Inversion(string name) : Base(name){
-}
+Inversion::Inversion(string name) : Base(name){ }
 
 void Inversion::operation(){
     for(int i=0; i<row; i++){

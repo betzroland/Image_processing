@@ -12,12 +12,13 @@ while(next=="y"){
     cout << "Write the name of the image (without format) you want to process!" << endl;
     cin >> name;
     enum Options {change_luminosity=1, inversion=2, contrast_enhancement=3, rotation=4,
-                                                    blurring=5, edge_detection=6, sharpening=7};
+                                                            blurring=5, edge_detection=6};
     int options;
     cout << "Choose an operation you want to apply!"
                 "\n\nChange luminosity -> press 1\nInversion -> press 2\n"
                         "Contrast enhancement -> press 3\nRotation -> press 4\n"
-                            "Blurring -> press 5\nEdge detection -> press 6\nSharpening -> press 7\n" << endl;
+                                "Blurring -> press 5\nEdge detection -> press 6\n" << endl;
+
     cin >> options;
 
     switch(options){
@@ -63,14 +64,8 @@ while(next=="y"){
                 edge.save();
                 break;
             }
-        case sharpening :
-            {
-
-                break;
-            }
     }
     cout << "\nDo you want to continue your work on other images? Press (y) or (n)!" << endl;
     cin >> next;
-
 }
 }

@@ -1,21 +1,19 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <typeinfo>
 #include "Contrast.h"
 
 using namespace std;
 
-Contrast::Contrast(string name) : Base(name){
-}
+Contrast::Contrast(string name) : Base(name){ }
 
 void Contrast::operation(){
     int percent;
-    cout << "How many percent of contrast enhancement do you want? (1-20)" << endl;
+    cout << "How many percent of contrast enhancement do you want? (1-99)" << endl;
     cin >> percent;
-    if(typeid(percent).name()!=typeid(1).name() || percent<1 || percent>99){
-        throw std::domain_error("Wrong parameter!");
-    }
+
+    //Exception
+
     for(int i=0; i<row; i++){
         for(int j=0; j<column; j++){
             if(vect[i][j]<(max_intensity/2.0)){

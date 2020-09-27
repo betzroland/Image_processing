@@ -20,6 +20,8 @@ private:
 public:
     Edge(std::string name);
 
+    ~Edge() { };
+
     void operation();
 
     int apply_Sobel_on_pixel(const int i, const int j);

@@ -10,10 +10,10 @@ using namespace std;
 Base::Base(string name){
     image_name=name;
     string filepath="C:/Users/betzr/Desktop/Images/PGM/Source/"+image_name+".pgm";
-    ifstream myfile1(filepath.c_str());
+    ifstream myfile(filepath.c_str());
 
     //------------------------------------------ Exception!
-    if(!myfile1){
+    if(!myfile){
         cout << "File not found!" << endl;
     }
     //------------------------------------------
@@ -25,8 +25,8 @@ Base::Base(string name){
     //Separating header and pixel_data strings, without comment lines (marked by #).
 
     string header, pixel_data;
-    while(!myfile1.eof()){
-        getline(myfile1, str_temp);
+    while(!myfile.eof()){
+        getline(myfile, str_temp);
         if(rowcounter<=3 && str_temp.find('#')!=0){
             header.append(str_temp+"\n");
             rowcounter++;
@@ -36,7 +36,7 @@ Base::Base(string name){
             rowcounter++;
         }
     }
-    myfile1.close();
+    myfile.close();
 
     //-------------------------------------------------------
     //Get the values of column, row and max "color" intensity.
