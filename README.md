@@ -1,5 +1,4 @@
 # Image_processing
 Basic image processing program for grayscale images (.pgm format).
-It is not a strictly object oriented code, I just tried to separate the different subtasks a bit.
-I made it mainly for learning and practicing, so it surely could be better, there are a few things I
-would do differently now, but it just works fine.
+
+In the implementation I used inheritance, which made the program's structure simple, also eliminates dependencies. The Base class contains the concept of a general image processing operation with a pure virtual function, named operation(). The methods for read-in process and saving the processed image are also implemented here. All the derived classes do one specific image processing operation by overriding the Base class' virtual operation function. Some minor addition to the program still needed, such as exception handling, but it's already fully operational. I also uploaded some sample images, and processed samples as well.
