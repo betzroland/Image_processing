@@ -1,7 +1,7 @@
 #ifndef CONTROLLER_H_INCLUDED
 #define CONTROLLER_H_INCLUDED
 #include <iostream>
-#include "Base.h"
+#include "ImageProcessor.h"
 #include "Luminosity.h"
 #include "Inversion.h"
 #include "Rotation.h"

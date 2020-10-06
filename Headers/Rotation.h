@@ -1,17 +1,17 @@
 #ifndef ROTATION_H_INCLUDED
 #define ROTATION_H_INCLUDED
 #include <vector>
-#include "Base.h"
+#include "ImageProcessor.h"
 
-class Rotation : public Base{
+class Rotation : public ImageProcessor{
 private:
-    std::vector<std::vector<int> > image_copyvector;
+    std::vector<std::vector<int> > pixel_copyvector;
 public:
     Rotation(std::string name);
 
     ~Rotation() { };
 
-    void operation();
+    void process_image();
 
     void rotate_by_90();
     void rotate_by_180();

@@ -11,8 +11,7 @@ while(next=="y"){
     string name;
     cout << "Write the name of the image (without format) you want to process!" << endl;
     cin >> name;
-    enum Options {change_luminosity=1, inversion=2, contrast_enhancement=3, rotation=4,
-                                                            blurring=5, edge_detection=6};
+
     int options;
     cout << "Choose an operation you want to apply!"
                 "\n\nChange luminosity -> press 1\nInversion -> press 2\n"
@@ -20,52 +19,54 @@ while(next=="y"){
                                 "Blurring -> press 5\nEdge detection -> press 6\n" << endl;
 
     cin >> options;
+    enum Options {change_luminosity=1, inversion=2, contrast_enhancement=3, rotation=4,
+                                                                blurring=5, edge_detection=6};
 
     switch(options){
         case change_luminosity :
             {
                 Luminosity luminosity(name);
-                luminosity.operation();
-                luminosity.save();
+                luminosity.process_image();
+                luminosity.save_image();
             break;
             }
         case inversion :
             {
                 Inversion inversion(name);
-                inversion.operation();
-                inversion.save();
+                inversion.process_image();
+                inversion.save_image();
             break;
             }
         case contrast_enhancement :
             {
                 Contrast contrast(name);
-                contrast.operation();
-                contrast.save();
+                contrast.process_image();
+                contrast.save_image();
                 break;
             }
         case rotation :
             {
                 Rotation rotated(name);
-                rotated.operation();
-                rotated.save();
+                rotated.process_image();
+                rotated.save_image();
                 break;
             }
         case blurring :
             {
                 Blurring blurred(name);
-                blurred.operation();
-                blurred.save();
+                blurred.process_image();
+                blurred.save_image();
                 break;
             }
         case edge_detection :
             {
                 Edge edge(name);
-                edge.operation();
-                edge.save();
+                edge.process_image();
+                edge.save_image();
                 break;
             }
     }
-    cout << "\nDo you want to continue your work on other images? Press (y) or (n)!" << endl;
+    cout << "\nDo you want to continue working on other images? Press (y) or (n)!" << endl;
     cin >> next;
 }
 }

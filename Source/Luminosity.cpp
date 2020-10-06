@@ -1,29 +1,24 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <typeinfo>
 #include "Luminosity.h"
 
 using namespace std;
 
-Luminosity::Luminosity(string name) : Base(name){ }
+Luminosity::Luminosity(string name) : ImageProcessor(name){ }
 
-void Luminosity::operation(){
+void Luminosity::process_image(){
 
     int percent;
     cout << "By how many percent? (-99 -> 99)" << endl;
     cin >> percent;
 
-    /*if(typeid(percent).name()!=typeid(1).name() || percent<1 || percent>99){
-        throw std::domain_error("Wrong parameter!");
-    }*/
-
     for(int i=0; i<row; i++){
         for(int j=0; j<column; j++){
-            if(vect[i][j]+(percent/100.0)*vect[i][j]<max_intensity){
-                vect[i][j]=vect[i][j]*(1+(percent/100.0));
+            if(pixel_vector[i][j]+(percent/100.0)*pixel_vector[i][j]<max_intensity){
+                pixel_vector[i][j]=pixel_vector[i][j]*(1+(percent/100.0));
             }
-            else vect[i][j]=max_intensity;
+            else pixel_vector[i][j]=max_intensity;
         }
     }
     image_name=image_name+"_luminosity_changed_by_"+to_string(percent)+"%.pgm";

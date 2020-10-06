@@ -5,11 +5,11 @@
 
 using namespace std;
 
-Rotation::Rotation(string name) : Base(name){
-    image_copyvector=vect;
+Rotation::Rotation(string name) : ImageProcessor(name){
+    pixel_copyvector=pixel_vector;
 }
 
-void Rotation::operation(){
+void Rotation::process_image(){
 
     int angle_of_rotation;
     cout << "Type the angle of rotation: (90, 180, 270)" << endl;
@@ -35,7 +35,7 @@ void Rotation::operation(){
 void Rotation::rotate_by_90(){
     for(int i=0; i<row; i++){
         for(int j=0; j<column; j++){
-            vect[i][j]=image_copyvector[j][(column-1)-i];
+            pixel_vector[i][j]=pixel_copyvector[j][(column-1)-i];
         }
     }
 }
@@ -43,7 +43,7 @@ void Rotation::rotate_by_90(){
 void Rotation::rotate_by_180(){
     for(int i=0; i<row; i++){
         for(int j=0; j<column; j++){
-            vect[i][j]=image_copyvector[(row-1)-i][(column-1)-j];
+            pixel_vector[i][j]=pixel_copyvector[(row-1)-i][(column-1)-j];
         }
     }
 }
@@ -51,7 +51,7 @@ void Rotation::rotate_by_180(){
 void Rotation::rotate_by_270(){
     for(int i=0; i<row; i++){
         for(int j=0; j<column; j++){
-            vect[i][j]=image_copyvector[(row-1)-j][i];
+            pixel_vector[i][j]=pixel_copyvector[(row-1)-j][i];
         }
     }
 }

@@ -1,14 +1,14 @@
 #ifndef INVERSION_H_INCLUDED
 #define INVERSION_H_INCLUDED
-#include "Base.h"
+#include "ImageProcessor.h"
 
-class Inversion : public Base{
+class Inversion : public ImageProcessor{
 public:
     Inversion(std::string name);
 
     ~Inversion() { };
 
-    void operation();
+    void process_image();
 };
 
 #endif // INVERSION_H_INCLUDED

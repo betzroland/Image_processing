@@ -1,14 +1,14 @@
 #ifndef CONTRAST_H_INCLUDED
 #define CONTRAST_H_INCLUDED
-#include "Base.h"
+#include "ImageProcessor.h"
 
-class Contrast : public Base{
+class Contrast : public ImageProcessor{
 public:
     Contrast(std::string name);
 
     ~Contrast() { };
 
-    void operation();
+    void process_image();
 };
 
 #endif // CONTRAST_H_INCLUDED

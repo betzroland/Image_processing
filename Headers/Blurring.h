@@ -1,10 +1,10 @@
 #ifndef BLURRING_H_INCLUDED
 #define BLURRING_H_INCLUDED
-#include "Base.h"
+#include "ImageProcessor.h"
 
-class Blurring : public Base{
+class Blurring : public ImageProcessor{
 private:
-    std::vector<std::vector<int> > image_copyvector;
+    std::vector<std::vector<int> > pixel_copyvector;
     const double d=49.0;
     const double Gaussian[5][5]= {
                                 {1/d, 1.5/d, 2/d, 1.5/d, 1/d},
@@ -19,7 +19,7 @@ public:
 
     ~Blurring() { };
 
-    void operation();
+    void process_image();
 
     int apply_Gaussian_on_pixel(const int i, const int j);
 };

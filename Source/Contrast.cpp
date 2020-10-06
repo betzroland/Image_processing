@@ -5,25 +5,23 @@
 
 using namespace std;
 
-Contrast::Contrast(string name) : Base(name){ }
+Contrast::Contrast(string name) : ImageProcessor(name){ }
 
-void Contrast::operation(){
+void Contrast::process_image(){
     int percent;
-    cout << "How many percent of contrast enhancement do you want? (1-99)" << endl;
+    cout << "By how many percent? (1-99)" << endl;
     cin >> percent;
-
-    //Exception
 
     for(int i=0; i<row; i++){
         for(int j=0; j<column; j++){
-            if(vect[i][j]<(max_intensity/2.0)){
-                vect[i][j]=vect[i][j]*(1-(percent/100.0));
+            if(pixel_vector[i][j]<(max_intensity/2.0)){
+                pixel_vector[i][j]=pixel_vector[i][j]*(1-(percent/100.0));
             }
-            else if(vect[i][j]>(max_intensity/2.0) && (vect[i][j]*(1+(percent/100.0)))<max_intensity){
-                vect[i][j]=vect[i][j]*(1+(percent/100.0));
+            else if(pixel_vector[i][j]>(max_intensity/2.0) && (pixel_vector[i][j]*(1+(percent/100.0)))<max_intensity){
+                pixel_vector[i][j]=pixel_vector[i][j]*(1+(percent/100.0));
             }
             else{
-                vect[i][j]=max_intensity;
+                pixel_vector[i][j]=max_intensity;
             }
         }
     }

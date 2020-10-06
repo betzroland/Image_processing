@@ -1,14 +1,14 @@
 #ifndef LUMINOSITY_H_INCLUDED
 #define LUMINOSITY_H_INCLUDED
-#include "Base.h"
+#include "ImageProcessor.h"
 
-class Luminosity : public Base{
+class Luminosity : public ImageProcessor{
 public:
     Luminosity(std::string name);
 
     ~Luminosity() { };
 
-    void operation();
+    void process_image();
 };
 
 

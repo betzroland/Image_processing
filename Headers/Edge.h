@@ -1,10 +1,10 @@
 #ifndef EDGE_H_INCLUDED
 #define EDGE_H_INCLUDED
-#include "Base.h"
+#include "ImageProcessor.h"
 
-class Edge : public Base{
+class Edge : public ImageProcessor{
 private:
-    std::vector<std::vector<int> > image_copyvector;
+    std::vector<std::vector<int> > pixel_copyvector;
 
     const double Edge_x[3][3]=   {                    // Sobel-operator1, convoluted form.
                                 {-1.0, 0.0, 1.0},
@@ -22,7 +22,7 @@ public:
 
     ~Edge() { };
 
-    void operation();
+    void process_image();
 
     int apply_Sobel_on_pixel(const int i, const int j);
 
